@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_one :plofile_image
+  has_many :books
   attachment :profile_image
   validates :name, length: { in: 2..20 }
   validates :introduction, length: { maximum: 50 }

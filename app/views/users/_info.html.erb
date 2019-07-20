@@ -1,0 +1,30 @@
+  <h2>User info</h2>
+  <%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+  <div style="border: 1px solid #333"></div>
+  <div class="info-content">
+    <div class="info-type">name</div>
+    <div class="info-text"><%= user.name %></div>
+  </div>
+  <div class="info-content">
+    <div class="info-type">introduction</div>
+    <div class="info-text"><%= user.introduction %></div>
+  </div>
+  <div class="info-edit">
+    <div class="">
+    </div>
+  </div>
+  <h2>New book</h2>
+  <%= form_for(book) do |f| %>
+    <div class="form-group has-icon">
+      <label class="control-label sr-only">Title</label>
+      <%= f.text_field :title, class:"form-control" %>
+      <span class="fa fa-building form-control-icon" aria-hidden="true"></span>
+    </div>
+    <div class="form-group has-icon">
+      <label class="control-label sr-only">Body</label>
+      <%= f.text_field :body, class:"form-control" %>
+      <span class="fa fa-building form-control-icon" aria-hidden="true"></span>
+    </div>
+    <%= f.submit "送信", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
+  <% end %>
+

@@ -1,0 +1,9 @@
+<h1>Book detail</h1>
+<div style="border: 1px solid #eee"></div>
+<table width="100%">
+  <tr>
+  	<td width="50%"><%= attachment_image_tag @user, :profile_image, :fill, 10, 10, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %><br><%= @user.name %></td>
+  	<td width="25%"><%= link_to @book.title, book_path(@book) %></td>
+  	<td width="25%"><%= @book.body %></td>
+  </tr>
+</table>
