@@ -50,7 +50,9 @@
     </header>
     <div class="body">
       <div class="container">
-        <!-- ここにメッセージ表示 -->
+        <div class="message"><%= flash[:notice] %></div>
+        <div class="message"><%= flash[:success] %></div>
+        <div class="message"><%= flash[:danger] %></div>
         <div class="row">
           <%= yield %>
         </div>

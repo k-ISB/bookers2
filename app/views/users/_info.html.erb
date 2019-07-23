@@ -1,13 +1,27 @@
+  <% if book.errors.any? %>
+    <p>errorだよ！</p>
+  <% end %>
   <h2>User info</h2>
   <%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
-  <div style="border: 1px solid #333"></div>
-  <div class="info-content">
-    <div class="info-type">name</div>
-    <div class="info-text"><%= user.name %></div>
+  <div class="row">
+    <div class="col-xs-12">
+      <table width="100%">
+        <tr></tr>
+        <tr>
+          <td>name</td>
+          <td><%= user.name %></td>
+        </tr>
+        <tr>
+          <td>introduction</td>
+          <td><%= user.introduction %></td>
+        </tr>
+      </table>
+    </div>
   </div>
-  <div class="info-content">
-    <div class="info-type">introduction</div>
-    <div class="info-text"><%= user.introduction %></div>
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-default"><%= link_to "edit", edit_user_path(user) %></button>
+    </div>
   </div>
   <div class="info-edit">
     <div class="">

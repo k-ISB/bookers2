@@ -11,8 +11,12 @@ class BooksController < ApplicationController
   def create
     user = current_user
     book = user.books.new(book_params)
-    book.save
-    redirect_to book_path(book)
+    if book.save
+      flash[:success] = "You have creatad book successfully."
+      redirect_to book_path(book)
+    else
+      render user_path(user)
+    end
   end
 
   def edit
