@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate
 
   def index
     @users = User.all
@@ -42,5 +42,9 @@ class UsersController < ApplicationController
 
     def book_params
       params.require(:book).permit(:title, :body)
+    end
+
+    def authenticate
+      redirect_to new_user_session_url unless user_signed_in?
     end
 end

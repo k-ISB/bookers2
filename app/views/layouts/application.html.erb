@@ -13,7 +13,7 @@
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
         <nav class="nav navbar-nav navbar-left">
-          <span style="color: #fff">Bookers</span>
+          <span class="app-title">Bookers</span>
         </nav>
         <nav>
           <ul class="nav navbar-nav navbar-right">
@@ -50,13 +50,20 @@
     </header>
     <div class="body">
       <div class="container">
-        <div class="message"><%= flash[:notice] %></div>
         <div class="message"><%= flash[:success] %></div>
-        <div class="message"><%= flash[:danger] %></div>
         <div class="row">
           <%= yield %>
         </div>
       </div>
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-3 col-xs-offset-9">
+              <p class="footer-text">CopyRight Infratop.inc</p>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   </body>
 </html>

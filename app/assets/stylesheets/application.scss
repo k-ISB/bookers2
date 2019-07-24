@@ -19,14 +19,13 @@
 .body{
   margin-top: 51px;
 }
-
-table {
-   border-collapse: collapse;
-   margin-top: 20px;
+.app-title{
+  color: #fff;
+  font-size: 20px;
 }
-table td {
-   border-width: 1px 0px 0px; /* 上下だけ引く */
-   border-color: #ddd;   /* 線色：緑 */
-   border-style: solid;   /* 線種：実線 */
-   padding: 0.3em;        /* セル内側の余白 */
+.glyphicon{
+  margin: 0 10px;
+}
+.footer{
+  float: right;
 }
