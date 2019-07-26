@@ -50,7 +50,11 @@
     </header>
     <div class="body">
       <div class="container">
-        <div class="message"><%= flash[:success] %></div>
+        <% if flash[:success] %>
+          <div class="message"><%= flash[:success] %></div>
+        <% elsif flash[:notice] %>
+          <div class="message"><%= flash[:notice] %></div>
+        <% end %>
         <div class="row">
           <%= yield %>
         </div>

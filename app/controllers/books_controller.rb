@@ -1,17 +1,20 @@
 class BooksController < ApplicationController
-  before_action :correct_user, only: [:edit, :destroy]
+  before_action :signed_in?
+  before_action :correct_user?, only: [:edit, :update, :destroy]
 
   def index
     @user = User.find(current_user.id)
     @book = Book.new
+    @book.user_id = @user.id
   	@books = Book.all
   end
 
   def show
-    @book = Book.find(params[:id])
-    @user = User.find(@book.user_id)
-    @book2 = Book.new
-    @user2 = User.find(current_user.id)
+    @book2 = Book.find(params[:id])
+    @user2 = User.find(@book2.user_id)
+    @user = User.find(current_user.id)
+    @book = Book.new
+    @book.user_id = @user.id
   end
 
   def create
@@ -53,7 +56,11 @@ class BooksController < ApplicationController
       params.require(:book).permit(:title, :body)
     end
 
-    def correct_user
+    def signed_in?
+      redirect_to new_user_session_url unless user_signed_in?
+    end
+
+    def correct_user?
       @book = Book.find(params[:id])
       redirect_to books_path unless @book.user_id == current_user.id
     end

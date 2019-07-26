@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   before_action :authenticate
+  before_action :correct_user?, only: [:edit]
 
   def index
     @users = User.all
-    @user = User.find(current_user.id)
+    @user = current_user
     @book = Book.new
     @book.user_id = @user.id
   end
@@ -29,9 +30,12 @@ class UsersController < ApplicationController
 
   def update
   	@user = User.find(params[:id])
-  	@user.update(user_params)
-    flash[:success] = "You have updated user successfully."
-  	redirect_to user_path(@user.id)
+  	if @user.update(user_params)
+      flash[:success] = "You have updated user successfully."
+  	  redirect_to user_path(@user.id)
+    else
+      render :edit
+    end
   end
 
   private
@@ -46,5 +50,10 @@ class UsersController < ApplicationController
 
     def authenticate
       redirect_to new_user_session_url unless user_signed_in?
+    end
+
+    def correct_user?
+      user = User.find(params[:id])
+      redirect_to user_path(current_user.id) unless user == current_user
     end
 end
